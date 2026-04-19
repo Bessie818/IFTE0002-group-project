@@ -18,3 +18,12 @@ Credit card default prediction using:
 - The current codebase contains the baseline implementation shared within the group.
 - Next steps include connecting multi-head attention into the full model, improving the training pipeline, and comparing single-head vs multi-head attention.
 - Report files such as PDF and DOCX can be added later in separate folders if needed.
+
+## Repository structure
+
+- `src/` — transformer code and training scripts
+- `notebooks/` — random forest benchmark notebook
+- `figures/rf/` — EDA and random forest result figures
+- `figures/transformer/` — reserved for transformer figures
+- `results/` — experiment summaries and csv outputs
+- `models/` — saved model artifacts
