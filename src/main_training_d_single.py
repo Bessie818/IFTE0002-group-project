@@ -78,8 +78,8 @@ model = CreditCardTransformerClassifier(
     pad_token_id=tokenizer.vocab["[PAD]"],
     d_model=64,
     ffn_hidden_dim=128,
-    dropout=0.1,
-    num_layers=3,
+    dropout=0.2,
+    num_layers=1,
     attention_type="single",
     num_heads=4,
 ).to(device)

@@ -1,0 +1,45 @@
+Single-head, num_layers=3, dropout=0.1
+Train Loss = 0.4112
+Test Acc = 0.8142
+Test AUC = 0.7656
+
+Multi-head, num_layers=3, dropout=0.1
+Train Loss = 0.4068
+Test Acc = 0.8177
+Test AUC = 0.7669
+
+Multi-head, num_layers=1, dropout=0.1
+Train Loss = 0.4286
+Test Acc = 0.8175
+Test AUC = 0.7697
+
+Multi-head, num_layers=2, dropout=0.1
+Train Loss = 0.4302
+Test Acc = 0.8172
+Test AUC = 0.7667
+
+Multi-head, num_layers=4, dropout=0.1
+Train Loss = 0.4283
+Test Acc = 0.8188
+Test AUC = 0.7667
+
+Multi-head, num_layers=1, dropout=0.2
+Train Loss = 0.4298
+Test Acc = 0.8155
+Test AUC = 0.7743
+
+Multi-head, num_layers=1, dropout=0.3
+Train Loss = 0.4365
+Test Acc = 0.8167
+Test AUC = 0.7653
+
+Single-head, num_layers=1, dropout=0.2
+Train Loss = 0.4267
+Test Acc = 0.8200
+Test AUC = 0.7744
+
+Current best result:
+Single-head, num_layers=1, dropout=0.2
+Train Loss = 0.4267
+Test Acc = 0.8200
+Test AUC = 0.7744
