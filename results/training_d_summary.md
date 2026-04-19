@@ -265,4 +265,16 @@ The Training (D) part now includes:
 - validation-based model selection,
 - and final transformer benchmarking against Random Forest.
 
+## 11. Transformer figures generated
+
+Two additional transformer figures were generated and saved in the repository:
+
+- `figures/transformer/fig_transformer_model_comparison.png`
+- `figures/transformer/fig_validated_auc_curve.png`
+
+These figures help visualize:
+- the comparison across transformer experiments,
+- the effect of layer and dropout tuning,
+- and the validation-based model selection process.
+
 This should be sufficient for the transformer training contribution in the group project and can be directly used in the experiments, results, and discussion sections of the final report.
