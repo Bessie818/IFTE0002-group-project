@@ -1,0 +1,44 @@
+Transformer (validated)
+Best Epoch = 13
+Best Validation AUC = 0.7732
+Final Test Loss = 0.4395
+Final Test Acc = 0.8182
+Final Test AUC = 0.7701
+
+Transformer tuning summary
+Best non-validated single-head:
+- attention_type = single
+- num_layers = 1
+- dropout = 0.2
+- Test AUC = 0.7744
+
+Best non-validated multi-head:
+- attention_type = multi
+- num_layers = 1
+- dropout = 0.2
+- Test AUC = 0.7743
+
+Random Forest benchmark
+Baseline RF (balanced):
+- AUC = 0.760
+- AP = 0.539
+- F1 = 0.443
+
+SMOTE RF:
+- AUC = 0.751
+- AP = 0.498
+- F1 = 0.504
+
+Tuned RF:
+- AUC = 0.777
+- AP = 0.554
+- F1 = 0.544
+
+Comparison
+The tuned Random Forest benchmark slightly outperformed the validated transformer model in AUC (0.777 vs 0.7701).
+
+Summary
+- The transformer model performed competitively after tuning.
+- The best validated transformer result achieved Test AUC = 0.7701.
+- The tuned RF benchmark achieved the best overall AUC = 0.777.
+- Therefore, RF currently performs slightly better on this tabular credit default task.
