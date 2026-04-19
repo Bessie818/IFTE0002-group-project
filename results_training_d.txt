@@ -43,3 +43,18 @@ Single-head, num_layers=1, dropout=0.2
 Train Loss = 0.4267
 Test Acc = 0.8200
 Test AUC = 0.7744
+
+#validated result
+Validated single-head, num_layers=1, dropout=0.2
+
+Train size = 19200
+Validation size = 4800
+Test size = 6000
+
+Best Epoch = 13
+Best Validation AUC = 0.7732
+
+Final Test Loss = 0.4395
+Final Test Acc = 0.8182
+Final Test AUC = 0.7701
+Predicted Default Probability = 18.00%
