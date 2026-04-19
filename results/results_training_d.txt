@@ -58,3 +58,78 @@ Final Test Loss = 0.4395
 Final Test Acc = 0.8182
 Final Test AUC = 0.7701
 Predicted Default Probability = 18.00%
+
+Validated learning rate tuning
+Fixed structure:
+- attention_type = single
+- num_layers = 1
+- dropout = 0.2
+- d_model = 64
+- ffn_hidden_dim = 128
+- batch_size = 128
+- epochs = 15
+
+Learning rate results:
+lr = 1e-3
+Best Epoch = 13
+Best Validation AUC = 0.7689
+Final Test Loss = 0.4395
+Final Test Acc = 0.8162
+Final Test AUC = 0.7648
+
+lr = 5e-4
+Best Epoch = 14
+Best Validation AUC = 0.7691
+Final Test Loss = 0.4381
+Final Test Acc = 0.8187
+Final Test AUC = 0.7681
+
+lr = 1e-4
+Best Epoch = 15
+Best Validation AUC = 0.7518
+Final Test Loss = 0.4427
+Final Test Acc = 0.8167
+Final Test AUC = 0.7589
+
+Conclusion:
+Among the tested learning rates, 5e-4 performed best in this controlled validated tuning experiment.
+1e-4 appeared too small and showed signs of underfitting.
+1e-3 remained competitive but was slightly worse than 5e-4.
+
+Validated layer ablation (fixed lr = 5e-4, dropout = 0.2)
+
+Single-head, layers = 1
+Best Epoch = 12
+Best Validation AUC = 0.7722
+Final Test AUC = 0.7682
+
+Single-head, layers = 2
+Best Epoch = 7
+Best Validation AUC = 0.7715
+Final Test AUC = 0.7697
+
+Single-head, layers = 3
+Best Epoch = 8
+Best Validation AUC = 0.7706
+Final Test AUC = 0.7699
+
+Multi-head, layers = 1
+Best Epoch = 14
+Best Validation AUC = 0.7748
+Final Test AUC = 0.7666
+
+Multi-head, layers = 2
+Best Epoch = 8
+Best Validation AUC = 0.7745
+Final Test AUC = 0.7717
+
+Multi-head, layers = 3
+Best Epoch = 7
+Best Validation AUC = 0.7742
+Final Test AUC = 0.7738
+
+Conclusion:
+In the single-head setting, increasing the number of layers did not improve validation AUC and showed mild signs of overfitting.
+In the multi-head setting, validation AUC remained very close across 1 to 3 layers, while the 3-layer model achieved the best final test AUC.
+Best transformer test result in this validated layer sweep:
+attention_type = multi, num_layers = 3, dropout = 0.2, lr = 5e-4, Final Test AUC = 0.7738

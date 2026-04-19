@@ -272,9 +272,96 @@ Two additional transformer figures were generated and saved in the repository:
 - `figures/transformer/fig_transformer_model_comparison.png`
 - `figures/transformer/fig_validated_auc_curve.png`
 
+Three more transformer figures were added:
+- `figures/transformer/fig_validated_train_loss_curve.png`
+- `figures/transformer/fig_transformer_vs_rf_comparison.png`
+- `figures/transformer/fig_layer_ablation_comparison.png`
+
 These figures help visualize:
 - the comparison across transformer experiments,
-- the effect of layer and dropout tuning,
-- and the validation-based model selection process.
+- the effect of layer depth on performance,
+- the training dynamics through the validated train loss curve,
+- the validation-based model selection process,
+- and the final comparison between transformer and random forest.
+
+## 12. Validated learning rate tuning
+
+A controlled learning rate tuning experiment was conducted using the validated pipeline.
+
+Fixed structure:
+- attention_type = `single`
+- num_layers = `1`
+- dropout = `0.2`
+- d_model = `64`
+- ffn_hidden_dim = `128`
+- batch_size = `128`
+- epochs = `15`
+
+Tested learning rates:
+- `1e-3`
+- `5e-4`
+- `1e-4`
+
+### Results
+
+| Learning Rate | Best Epoch | Best Validation AUC | Final Test Loss | Final Test Acc | Final Test AUC |
+|---|---:|---:|---:|---:|---:|
+| 1e-3 | 13 | 0.7689 | 0.4395 | 0.8162 | 0.7648 |
+| 5e-4 | 14 | 0.7691 | 0.4381 | 0.8187 | 0.7681 |
+| 1e-4 | 15 | 0.7518 | 0.4427 | 0.8167 | 0.7589 |
+
+### Interpretation
+
+Among the tested learning rates, `5e-4` produced the best validation and test performance in this controlled experiment.
+
+`1e-4` appeared too small and likely underfit, as both validation AUC and final test AUC were clearly lower.
+
+`1e-3` remained competitive, but it was slightly worse than `5e-4`.
+
+This learning rate sweep improved the systematicity of the training experiments and addressed an important weakness in the earlier training setup.
+
+## 13. Validated layer ablation
+
+A validated layer ablation experiment was conducted using the best tuned learning rate.
+
+Fixed settings:
+- learning rate = `5e-4`
+- dropout = `0.2`
+- d_model = `64`
+- ffn_hidden_dim = `128`
+- batch_size = `128`
+- epochs = `15`
+
+Tested configurations:
+- single-head, layers = 1 / 2 / 3
+- multi-head, layers = 1 / 2 / 3
+
+### Results
+
+| Attention Type | Layers | Best Epoch | Best Validation AUC | Final Test AUC |
+|---|---:|---:|---:|---:|
+| Single | 1 | 12 | 0.7722 | 0.7682 |
+| Single | 2 | 7 | 0.7715 | 0.7697 |
+| Single | 3 | 8 | 0.7706 | 0.7699 |
+| Multi | 1 | 14 | 0.7748 | 0.7666 |
+| Multi | 2 | 8 | 0.7745 | 0.7717 |
+| Multi | 3 | 7 | 0.7742 | 0.7738 |
+
+### Interpretation
+
+In the single-head setting, increasing the number of layers did not improve validation AUC. At the same time, train loss continued to decrease, suggesting mild overfitting in deeper single-head models.
+
+In the multi-head setting, validation AUC remained very close across different depths, indicating that multi-head attention was relatively stable to layer depth on this task.
+
+The best final transformer test result in this validated layer ablation was achieved by:
+- `attention_type = multi`
+- `num_layers = 3`
+- `dropout = 0.2`
+- `learning_rate = 5e-4`
+
+with:
+- `Final Test AUC = 0.7738`
+
+This result was very close to the tuned Random Forest benchmark (`AUC = 0.777`).
 
 This should be sufficient for the transformer training contribution in the group project and can be directly used in the experiments, results, and discussion sections of the final report.
