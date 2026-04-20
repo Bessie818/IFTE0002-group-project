@@ -1,0 +1,13 @@
+Best config selected using validation only
+{'attention_type': 'multi', 'num_layers': 3, 'dropout': 0.3, 'lr': 0.001, 'd_model': 16, 'attention_dim': 16, 'ffn_hidden_dim': 32, 'batch_size': 32, 'max_epochs': 30, 'patience': 5}
+
+Best Epoch = 16
+Best Train Loss = 0.8635
+Best Val Loss = 0.8889
+Best Val Acc = 0.7542
+Best Val AUC = 0.7745
+
+Final test evaluation (used once at the end)
+Final Test Loss = 0.8890
+Final Test Acc = 0.7518
+Final Test AUC = 0.7735
